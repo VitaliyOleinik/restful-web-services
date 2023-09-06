@@ -1,13 +1,17 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.in28minutes.rest.webservices.restfulwebservices.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity(name = "user_details")
 public class User {
@@ -25,6 +29,10 @@ public class User {
     @Past(message = "should be in the past")
     @JsonProperty("birth_date")
     private LocalDate birthDate;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 
     public User(Integer id, String name, LocalDate birthDate) {
         this.id = id;
