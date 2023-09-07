@@ -40,6 +40,14 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
     public Integer getId() {
         return id;
     }
